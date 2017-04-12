@@ -50,6 +50,7 @@ group :test do
   gem 'cucumber-rails', '~> 1.4.5', require: false
   gem 'capybara', '~> 2.13.0'
   gem 'database_cleaner', '~> 1.5.3'
+  gem 'capybara-pompom', '~> 0.0.2'
 end
 
 gem 'devise', '~> 4.2.1'
