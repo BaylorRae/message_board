@@ -1,3 +1,10 @@
+Given(/^(.*) has logged in$/) do |login|
+  steps %Q{
+    Given #{login} has created an account
+    When #{login} logs into their account
+  }
+end
+
 Given(/^(.*) has created an account$/) do |login|
   User.create!(email: login + '@example.com', password: 'secret')
 end

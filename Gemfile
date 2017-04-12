@@ -54,3 +54,5 @@ group :test do
 end
 
 gem 'devise', '~> 4.2.1'
+
+gem 'board', path: './engines/board'

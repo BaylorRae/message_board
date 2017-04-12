@@ -1,0 +1,13 @@
+<article class="post">
+  <header>
+    <h3 class="post-title"><%= @post.title %></h3>
+  </header>
+
+  <div class="post-body">
+    <%= simple_format @post.messages.first.body %>
+  </div>
+
+  <div class="post-author">
+    <%= @post.user.email %>
+  </div>
+</article>

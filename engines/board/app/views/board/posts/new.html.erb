@@ -1,0 +1,18 @@
+<%= form_for @post do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control input-lg' %>
+  </div>
+
+  <%= f.fields_for :messages do |m| %>
+    <div class="form-group">
+      <%= m.label :body %>
+      <%= m.text_area :body, class: 'form-control' %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit "Post", class: 'btn btn-primary' %>
+    <%= link_to "Cancel", :back, class: 'btn btn-link' %>
+  </div>
+<% end %>

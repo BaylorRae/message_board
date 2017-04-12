@@ -1,3 +1,9 @@
+PATH
+  remote: ./engines/board
+  specs:
+    board (0.0.1)
+      rails (~> 4.2.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -208,6 +214,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  board!
   byebug
   capybara (~> 2.13.0)
   capybara-pompom (~> 0.0.2)
