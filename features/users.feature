@@ -6,4 +6,6 @@ Feature: users
     Then bob should be logged into their account
 
   Scenario: log into an account
-    When pending
+    Given bob has created an account
+    When bob logs into their account
+    Then bob should be logged into their account
