@@ -22,4 +22,25 @@ describe Board::PostsController do
       expect(response).to render_template('404')
     end
   end
+
+  context "GET new" do
+    it "requires authentication" do
+      get :new
+      expect(response).to redirect_to('/')
+    end
+
+    it "assigns a new post" do
+      sign_in
+      get :new
+      expect(assigns(:post)).to be_new_record
+    end
+
+    it "builds an initial message for the post" do
+      sign_in
+      get :new
+      post = assigns(:post)
+      expect(post.messages.length).to eq(1)
+    end
+  end
+
 end
