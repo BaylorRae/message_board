@@ -66,6 +66,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    combustion (0.6.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
+      thor (>= 0.14.6)
     concurrent-ruby (1.0.5)
     cucumber (2.4.0)
       builder (>= 2.1.2)
@@ -225,6 +229,7 @@ DEPENDENCIES
   capybara (~> 2.13.0)
   capybara-pompom (~> 0.0.2)
   coffee-rails (~> 4.1.0)
+  combustion (~> 0.6.0)
   cucumber-rails (~> 1.4.5)
   database_cleaner (~> 1.5.3)
   devise (~> 4.2.1)
