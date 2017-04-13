@@ -5,5 +5,5 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.travis.yml config/database.yml
 script:
-  - bundle exec rake && cd engines/board && bundle exec rake
+  - bundle exec rake test_with_coveralls
 

@@ -52,7 +52,7 @@ group :test do
   gem 'database_cleaner', '~> 1.5.3'
   gem 'capybara-pompom', '~> 0.0.2'
   gem "combustion", "~> 0.6.0"
-  gem 'simplecov', '~> 0.14.1', require: false
+  gem 'coveralls', require: false
 end
 
 gem 'devise', '~> 4.2.1'

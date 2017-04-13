@@ -4,3 +4,14 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+task :board_engine_test do
+  sh "cd engines/board && rake"
+end
+
+begin
+  require 'coveralls/rake/task'
+  Coveralls::RakeTask.new
+  task :test_with_coveralls => [:spec, :cucumber, :board_engine_test, 'coveralls:push']
+rescue LoadError
+end

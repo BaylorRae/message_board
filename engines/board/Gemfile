@@ -16,7 +16,7 @@ gemspec
 gem 'rspec-rails', group: [:development, :test]
 
 group :test do
-  gem 'simplecov', '~> 0.14.1', :require => false
   gem 'devise', '~> 4.2.1'
   gem "combustion", "~> 0.6.0"
+  gem 'coveralls', require: false
 end
