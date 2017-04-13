@@ -51,6 +51,7 @@ group :test do
   gem 'capybara', '~> 2.13.0'
   gem 'database_cleaner', '~> 1.5.3'
   gem 'capybara-pompom', '~> 0.0.2'
+  gem 'simplecov', '~> 0.14.1', require: false
 end
 
 gem 'devise', '~> 4.2.1'
