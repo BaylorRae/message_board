@@ -4,6 +4,13 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
+require 'simplecov'
+require 'coveralls'
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.command_name 'MessageBoard:features'
+SimpleCov.start
+Coveralls.wear_merged!
+
 require 'cucumber/rails'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
