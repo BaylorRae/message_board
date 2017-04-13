@@ -4,6 +4,7 @@ rvm:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.travis.yml config/database.yml
+  - cd engines/board && bundle install
 script:
-  - rake && cd engines/board && rake
+  - bundle exec rake && cd engines/board && bundle exec rake
 
