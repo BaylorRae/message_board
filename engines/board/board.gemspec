@@ -20,5 +20,4 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.8"
 
   s.add_development_dependency "pg"
-  s.add_development_dependency "combustion", "~> 0.6.0"
 end
