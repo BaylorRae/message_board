@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414144942) do
+ActiveRecord::Schema.define(version: 20170414155610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,43 @@ ActiveRecord::Schema.define(version: 20170414144942) do
      FROM (messages m
        JOIN users u ON ((m.user_id = u.id)))
     ORDER BY m.created_at;
+  SQL
+
+  create_view :post_listings,  sql_definition: <<-SQL
+      WITH posts_cte AS (
+           SELECT p_1.id,
+              p_1.title,
+              p_1.user_id,
+              count(m.id) AS messages_count,
+              p_1.created_at,
+              p_1.updated_at
+             FROM (posts p_1
+               LEFT JOIN messages m ON ((p_1.id = m.post_id)))
+            GROUP BY p_1.id
+          ), max_message_numbers_cte AS (
+           SELECT post_messages.post_id,
+              max(post_messages.message_number) AS message_number
+             FROM post_messages
+            GROUP BY post_messages.post_id
+          )
+   SELECT p.id,
+      p.title,
+      p.user_id,
+      u.email AS post_author,
+      p.messages_count,
+      last_message.user_id AS last_author_user_id,
+      last_message.email AS last_author_email,
+      last_message.created_at AS last_message_at,
+      last_message.message_number AS last_message_number,
+      p.created_at,
+      p.updated_at
+     FROM (((posts_cte p
+       JOIN users u ON ((u.id = p.user_id)))
+       LEFT JOIN ( SELECT max_message_numbers_cte.post_id,
+              max_message_numbers_cte.message_number
+             FROM max_message_numbers_cte) max_message_numbers ON ((max_message_numbers.post_id = p.id)))
+       LEFT JOIN post_messages last_message ON (((last_message.post_id = p.id) AND (last_message.message_number = max_message_numbers.message_number))))
+    ORDER BY last_message.created_at DESC;
   SQL
 
 end
