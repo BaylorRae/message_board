@@ -1,13 +1,13 @@
 <h2 class="thread-title"><%= @post.title %></h2>
 
-<% @post.messages.each do |message| %>
+<% @post.post_messages.each do |message| %>
   <article class="post">
     <div class="post-body">
       <%= simple_format message.body %>
     </div>
 
     <div class="post-author">
-      <%= message.user.email %>
+      <%= message.email %>
     </div>
   </article>
 <% end %>

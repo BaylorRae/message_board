@@ -43,4 +43,17 @@ ActiveRecord::Schema.define do
   add_foreign_key "messages", "posts"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
+
+  create_view :post_messages,  sql_definition: <<-SQL
+      SELECT m.id,
+      m.post_id,
+      m.user_id,
+      u.email,
+      m.body,
+      m.created_at,
+      m.updated_at
+     FROM (messages m
+       JOIN users u ON ((m.user_id = u.id)))
+    ORDER BY m.created_at;
+  SQL
 end
