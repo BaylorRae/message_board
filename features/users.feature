@@ -10,6 +10,7 @@ Feature: users
     When bob logs into their account
     Then bob should be logged into their account
 
-  @wip
   Scenario: update account
-    When pending
+    Given bob has logged in
+    When bob updates their email
+    Then bob should have an updated email
