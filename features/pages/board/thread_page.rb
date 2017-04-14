@@ -2,7 +2,7 @@ module Pages
   module Board
     class ThreadPage < Capybara::PomPom::Page
 
-      field :reply_field, "Message"
+      field :reply_field, "Body"
       button :reply_button, "Post"
 
       def post_reply
