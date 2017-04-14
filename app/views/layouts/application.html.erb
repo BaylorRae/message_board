@@ -8,11 +8,11 @@
 </head>
 <body>
 
-  <% if user_signed_in? %>
-    Welcome <%= current_user.email %>
-  <% end %>
+  <%= render "static/navbar" %>
 
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

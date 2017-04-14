@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   mount Board::Engine, at: '/board'
+
+  get '/account', to: 'users#edit'
+  patch '/account', to: 'users#update'
 end
