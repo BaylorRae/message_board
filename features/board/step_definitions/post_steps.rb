@@ -1,4 +1,4 @@
-When(/^(.*) creates a new post$/) do |login|
+When(/^(.*) creates a new thread$/) do |login|
   steps %Q{
     Given #{login} has logged in
   }
