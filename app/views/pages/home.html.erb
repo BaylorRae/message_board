@@ -1,1 +1,17 @@
 <h2>Message Board</h2>
+
+<% @posts.each do |post| %>
+  <div class="thread">
+    <h3 class="post-title"><%= link_to post.title, board.post_path(post) %></h3>
+
+    <div class="recent-messages">
+      <% post.messages.each do |message| %>
+        <blockquote class="post">
+          <%= simple_format message.body %>
+          <span class="author"><%= message.email %></span>
+          <span class="message-time"><%= message.created_at %></span>
+        </blockquote>
+      <% end %>
+    </div>
+  </div>
+<% end %>
