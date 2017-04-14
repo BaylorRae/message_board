@@ -45,7 +45,8 @@ ActiveRecord::Schema.define do
   add_foreign_key "posts", "users"
 
   create_view :post_messages,  sql_definition: <<-SQL
-      SELECT m.id,
+      SELECT row_number() OVER (PARTITION BY m.post_id ORDER BY m.created_at) AS message_number,
+      m.id,
       m.post_id,
       m.user_id,
       u.email,

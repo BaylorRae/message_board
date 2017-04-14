@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414141904) do
+ActiveRecord::Schema.define(version: 20170414144942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,8 @@ ActiveRecord::Schema.define(version: 20170414141904) do
   add_foreign_key "posts", "users"
 
   create_view :post_messages,  sql_definition: <<-SQL
-      SELECT m.id,
+      SELECT row_number() OVER (PARTITION BY m.post_id ORDER BY m.created_at) AS message_number,
+      m.id,
       m.post_id,
       m.user_id,
       u.email,
