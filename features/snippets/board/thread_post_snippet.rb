@@ -7,10 +7,6 @@ module Pages
           @post = post
         end
 
-        def title
-          @post.find('.post-title').text
-        end
-
         def body
           @post.find('.post-body').text
         end

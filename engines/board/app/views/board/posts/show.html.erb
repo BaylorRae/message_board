@@ -1,13 +1,13 @@
-<article class="post">
-  <header>
-    <h3 class="post-title"><%= @post.title %></h3>
-  </header>
+<h2 class="thread-title"><%= @post.title %></h2>
 
-  <div class="post-body">
-    <%= simple_format @post.messages.first.body %>
-  </div>
+<% @post.messages.each do |message| %>
+  <article class="post">
+    <div class="post-body">
+      <%= simple_format message.body %>
+    </div>
 
-  <div class="post-author">
-    <%= @post.user.email %>
-  </div>
-</article>
+    <div class="post-author">
+      <%= message.user.email %>
+    </div>
+  </article>
+<% end %>
