@@ -1,14 +1,26 @@
-When(/^(.*) creates a new thread$/) do |login|
+Given(/^(.*) has created a thread$/) do |login|
   steps %Q{
-    Given #{login} has logged in
+    When #{login} creates a new thread
   }
+end
 
+When(/^(.*) creates a new thread$/) do |login|
+  change_user(login)
   Pages::Board::NewPostPage.create_post
+end
+
+When(/^(.*) replies$/) do |login|
+  change_user(login)
+
+  last_thread = Post.last
+  visit board.post_path(last_thread.id)
+
+  Pages::Board::ThreadPage.post_reply
 end
 
 Then(/^the new post should be created$/) do |table|
   thread_page = Pages::Board::ThreadPage.new
-  latest_post = thread_page.first_post
+  latest_post = thread_page.latest_post
 
   expected_post = table.hashes.first
 

@@ -1,8 +1,5 @@
 Given(/^(.*) has logged in$/) do |login|
-  steps %Q{
-    Given #{login} has created an account
-    When #{login} logs into their account
-  }
+  change_user(login)
 end
 
 Given(/^(.*) has created an account$/) do |login|
