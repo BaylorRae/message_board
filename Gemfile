@@ -57,4 +57,6 @@ end
 
 gem 'devise', '~> 4.2.1'
 
+gem 'scenic', '~> 1.3.0'
+
 gem 'board', path: './engines/board'
