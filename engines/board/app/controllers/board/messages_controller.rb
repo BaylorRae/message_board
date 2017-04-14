@@ -3,10 +3,10 @@ module Board
     before_action :authenticate_user!
 
     def create
-      post = Post.find(params[:post_id])
-      message = PostService.reply_to_post(current_user, post, message_params)
-      if message.persisted?
-        redirect_to post_path(post.id)
+      @post = Post.find(params[:post_id])
+      @message = PostService.reply_to_post(current_user, @post, message_params)
+      if @message.persisted?
+        redirect_to post_path(@post.id)
       else
         render :new
       end

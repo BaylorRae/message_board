@@ -24,6 +24,18 @@ describe Board::MessagesController do
       post :create, post_id: 'post-id', message: { body: 'message-body' }
     end
 
+    it "assigns the post to an instance variable" do
+      allow(Post).to receive(:find).with('post-id') { thread }
+      post :create, post_id: 'post-id', message: { body: 'message-body' }
+      expect(assigns(:post)).to eq(thread)
+    end
+
+    it "assigns the message to an instance variable" do
+      allow(Post).to receive(:find).with('post-id') { thread }
+      post :create, post_id: 'post-id', message: { body: 'message-body' }
+      expect(assigns(:message)).to eq(message)
+    end
+
     it "redirects to the post when successful" do
       allow(message).to receive(:persisted?) { true }
       allow(Post).to receive(:find).with('post-id') { thread }
