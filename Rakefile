@@ -9,6 +9,8 @@ task :board_engine_test do
   sh "cd engines/board && rake"
 end
 
+task :default => :board_engine_test
+
 begin
   require 'coveralls/rake/task'
   Coveralls::RakeTask.new
