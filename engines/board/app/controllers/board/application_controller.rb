@@ -5,5 +5,7 @@ module Board
     rescue_from ActiveRecord::RecordNotFound do
       render '/static/404', status: 404
     end
+
+    layout 'application'
   end
 end

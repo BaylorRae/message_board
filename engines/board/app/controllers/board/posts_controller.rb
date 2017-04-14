@@ -3,7 +3,7 @@ module Board
     before_action :authenticate_user!, except: [:index, :show]
 
     def show
-      @post = Post.find(params[:id])
+      @post = Post.includes(:post_messages => :user).find(params[:id])
     end
 
     def new

@@ -8,7 +8,7 @@
       <% post.messages.each do |message| %>
         <blockquote class="post">
           <%= simple_format message.body %>
-          <span class="author"><%= message.email %></span>
+          <span class="author"><%= message.user.display_name %></span>
           <span class="message-time"><%= message.created_at %></span>
         </blockquote>
       <% end %>
