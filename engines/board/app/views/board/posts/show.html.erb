@@ -1,4 +1,7 @@
-<h2 class="thread-title"><%= @post.title %></h2>
+<h2>
+  <%= link_to "Message Board", main_app.root_path %> /
+  <span class="thread-title"><%= @post.title %></span>
+</h2>
 
 <div class="recent-messages">
   <% @post.post_messages.each do |message| %>
