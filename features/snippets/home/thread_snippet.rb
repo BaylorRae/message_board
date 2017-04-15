@@ -12,7 +12,7 @@ module Snippets
       end
 
       def posts
-        @thread.find_all('.post').map do |post|
+        @thread.find_all('.message').map do |post|
           PostSnippet.new(post)
         end
       end

@@ -1,0 +1,19 @@
+.thread {
+  margin-bottom: 2em;
+}
+
+.recent-messages {
+
+  .message {
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .message:nth-child(odd) {
+    background: #f2f2f2;
+  }
+
+  .message .author {
+    display: block;
+  }
+}

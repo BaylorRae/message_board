@@ -27,7 +27,7 @@ module Pages
       private
       
       def posts
-        find_all('.post')
+        find_all('.message')
       end
 
     end

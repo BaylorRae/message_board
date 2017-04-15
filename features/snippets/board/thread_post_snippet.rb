@@ -8,11 +8,11 @@ module Pages
         end
 
         def body
-          @post.find('.post-body').text
+          @post.find('.body').text
         end
 
         def author
-          @post.find('.post-author').text
+          @post.find('.author').text
         end
 
       end
