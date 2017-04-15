@@ -19,13 +19,19 @@
 
 <hr />
 
-<%= form_for [@post, Message.new] do |f| %>
-  <div class="form-group">
-    <%= f.label :body, "Body" %>
-    <%= f.text_area :body, class: 'form-control' %>
-  </div>
+<% if user_signed_in? %>
+  <%= form_for [@post, Message.new] do |f| %>
+    <div class="form-group">
+      <%= f.label :body, "Body" %>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
 
-  <div class="form-group">
-    <%= f.submit "Post", class: 'btn btn-primary' %>
-  </div>
+    <div class="form-group">
+      <%= f.submit "Post", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="lead">
+  <%= link_to "Log in", main_app.new_user_session_path %> or <%= link_to "create an account", main_app.new_user_registration_path %> to join the conversation.
+  </p>
 <% end %>
