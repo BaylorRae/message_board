@@ -31,15 +31,9 @@ describe Board::PostsController do
 
     it "assigns a new post" do
       sign_in
+      allow(Post).to receive(:new_with_message) { Post.new }
       get :new
       expect(assigns(:post)).to be_new_record
-    end
-
-    it "builds an initial message for the post" do
-      sign_in
-      get :new
-      post = assigns(:post)
-      expect(post.messages.length).to eq(1)
     end
   end
 

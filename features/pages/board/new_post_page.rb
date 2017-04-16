@@ -11,9 +11,11 @@ module Pages
       end
 
       def create_post
-        title_field.set('My First Post')
-        body_field.set('The body of a great new post')
-        post_button.click
+        within '#new_post' do
+          title_field.set('My First Post')
+          body_field.set('The body of a great new post')
+          post_button.click
+        end
       end
 
     end

@@ -4,4 +4,10 @@ class Post < ActiveRecord::Base
   has_many :post_messages
 
   accepts_nested_attributes_for :messages, reject_if: :all_blank
+
+  def self.new_with_message
+    post = new
+    post.messages.build
+    post
+  end
 end

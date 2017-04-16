@@ -6,8 +6,10 @@ module Pages
       button :reply_button, "Post"
 
       def post_reply
-        reply_field.set('This is a response to a great thread')
-        reply_button.click
+        within '#new_message' do
+          reply_field.set('This is a response to a great thread')
+          reply_button.click
+        end
       end
 
       def title

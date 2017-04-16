@@ -14,8 +14,7 @@ module Board
     end
 
     def new
-      @post = Post.new
-      @post.messages.build
+      @post = Post.new_with_message
     end
 
     def create
