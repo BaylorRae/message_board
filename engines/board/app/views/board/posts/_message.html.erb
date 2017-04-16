@@ -1,0 +1,9 @@
+<div class="row message">
+  <div class="col-md-3">
+    <span class="author"><%= message.user.display_name %></span>
+    <span class="message-time">posted <%= time_ago_in_words message.created_at %> ago</span>
+  </div>
+  <div class="col-md-9 body">
+    <%= simple_format message.body %>
+  </div>
+</div>

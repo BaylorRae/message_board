@@ -9,17 +9,7 @@
     <h3 class="post-title"><%= link_to post.title, post_path(post) %></h3>
 
     <div class="recent-messages">
-      <% post.messages.each do |message| %>
-        <div class="row message">
-          <div class="col-md-3">
-            <span class="author"><%= message.user.display_name %></span>
-            <span class="message-time">posted <%= time_ago_in_words message.created_at %> ago</span>
-          </div>
-          <div class="col-md-9">
-            <%= simple_format message.body %>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: "message", collection: post.messages, as: :message %>
     </div>
   </div>
 <% end %>
