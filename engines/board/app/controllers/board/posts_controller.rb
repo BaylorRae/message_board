@@ -2,6 +2,13 @@ module Board
   class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
 
+    def index
+      @posts = PostListing
+        .includes(:messages => :user)
+        .where('last_message_number is null or post_messages.message_number > last_message_number - 3')
+        .order('post_messages.created_at desc')
+    end
+
     def show
       @post = Post.includes(:post_messages => :user).find(params[:id])
     end
