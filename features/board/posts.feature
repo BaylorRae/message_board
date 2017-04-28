@@ -13,3 +13,7 @@ Feature: board/posts
     Then the new post should be created
       | title         | body                                 | author |
       | My First Post | This is a response to a great thread | alice  |
+
+  Scenario: create a blank thread
+    When bob creates a blank thread
+    Then an error should be shown for missing post fields

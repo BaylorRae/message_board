@@ -9,6 +9,11 @@ When(/^(.*) creates a new thread$/) do |login|
   Pages::Board::NewPostPage.create_post
 end
 
+When(/^(.*) creates a blank thread$/) do |login|
+  change_user(login)
+  Pages::Board::NewPostPage.create_blank_post
+end
+
 When(/^(.*) replies$/) do |login|
   change_user(login)
 
@@ -27,4 +32,10 @@ Then(/^the new post should be created$/) do |table|
   expect(thread_page.title).to eq(expected_post[:title])
   expect(latest_post.body).to eq(expected_post[:body])
   expect(latest_post.author).to eq(expected_post[:author] + '@example.com')
+end
+
+Then(/^an error should be shown for missing post fields$/) do
+  expect(page).to have_content('The following errors prevented us from creating your post')
+  expect(page).to have_content("Title can't be blank")
+  expect(page).to have_content("Messages body can't be blank")
 end

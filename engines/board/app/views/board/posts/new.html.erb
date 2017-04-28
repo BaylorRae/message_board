@@ -1,6 +1,16 @@
 <%= form_for @post do |f| %>
+  <% if @post.errors.any? %>
+    <p class="alert">The following errors prevented us from creating your post</p>
+
+    <ol>
+      <% @post.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ol>
+  <% end %>
+
   <div class="form-group">
-    <%= f.label :title %>
+   <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control input-lg' %>
   </div>
 

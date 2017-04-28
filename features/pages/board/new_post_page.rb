@@ -11,13 +11,22 @@ module Pages
       end
 
       def create_post
+        submit_form('My First Post', 'The body of a great new post')
+      end
+
+      def create_blank_post
+        submit_form('', '')
+      end
+
+      private
+
+      def submit_form(title, body)
         within '#new_post' do
-          title_field.set('My First Post')
-          body_field.set('The body of a great new post')
+          title_field.set(title)
+          body_field.set(body)
           post_button.click
         end
       end
-
     end
   end
 end

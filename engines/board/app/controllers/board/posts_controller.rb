@@ -20,6 +20,7 @@ module Board
     def create
       @post = Post.new(post_params)
       @post.user = current_user
+      @post.messages.build if @post.messages.blank?
       @post.messages.first.user = current_user
       if @post.save
         redirect_to @post
