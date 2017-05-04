@@ -1,20 +1,9 @@
 module Pages
   module Snippets
     module Board
-      class ThreadPostSnippet
-
-        def initialize(post)
-          @post = post
-        end
-
-        def body
-          @post.find('.body').text
-        end
-
-        def author
-          @post.find('.author').text
-        end
-
+      class ThreadPostSnippet < Capybara::PomPom::Component
+        css :body, ".body"
+        css :author, ".author"
       end
     end
   end

@@ -1,20 +1,13 @@
+require './features/snippets/home/post_snippet'
+
 module Snippets
   module Home
-    class ThreadSnippet
-      include Capybara::PomPom::Finder
-
-      def initialize(thread)
-        @thread = thread
-      end
+    class ThreadSnippet < Capybara::PomPom::Component
+      css :post_title, ".post-title"
+      components :posts, ".message", wrapper: PostSnippet
 
       def title
-        @thread.find('.post-title').text
-      end
-
-      def posts
-        @thread.find_all('.message').map do |post|
-          PostSnippet.new(post)
-        end
+        post_title.text
       end
     end
   end

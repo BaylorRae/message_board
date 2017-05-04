@@ -1,9 +1,14 @@
+require './features/snippets/board/thread_post_snippet'
+
 module Pages
   module Board
     class ThreadPage < Capybara::PomPom::Page
 
+      css :thread_title, ".thread-title"
       field :reply_field, "Body"
       button :reply_button, "Post"
+
+      components :posts, ".message", wrapper: Pages::Snippets::Board::ThreadPostSnippet
 
       def post_reply
         within '#new_message' do
@@ -12,24 +17,12 @@ module Pages
         end
       end
 
-      def title
-        find('.thread-title').text
-      end
-
       def first_post
-        post = posts.first
-        Pages::Snippets::Board::ThreadPostSnippet.new(post)
+        posts.first
       end
 
       def latest_post
-        post = posts.last
-        Pages::Snippets::Board::ThreadPostSnippet.new(post)
-      end
-
-      private
-      
-      def posts
-        find_all('.message')
+        posts.last
       end
 
     end

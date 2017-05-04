@@ -29,9 +29,9 @@ Then(/^the new post should be created$/) do |table|
 
   expected_post = table.hashes.first
 
-  expect(thread_page.title).to eq(expected_post[:title])
-  expect(latest_post.body).to eq(expected_post[:body])
-  expect(latest_post.author).to eq(expected_post[:author] + '@example.com')
+  expect(thread_page.thread_title.text).to eq(expected_post[:title])
+  expect(latest_post.body.text).to eq(expected_post[:body])
+  expect(latest_post.author.text).to eq(expected_post[:author] + '@example.com')
 end
 
 Then(/^an error should be shown for missing post fields$/) do
