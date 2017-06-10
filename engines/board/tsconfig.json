@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "experimentalDecorators": true
+  } ,
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
